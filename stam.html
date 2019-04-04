@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+    <title>Stam</title>
+  </head>
+  <body>
+    <div id="root">
+      STAM
+    </div>
+
+    <script>
+      fetch("https://aryeh-nigri.github.io/API/siddur/test.json")
+        .then(res => res.json())
+        .then(res => {
+          console.log(res);
+          let output = `
+            <h1>${res.string}</h1>
+            <h1>${res.number}</h1>
+            <h1>${res.siddur.language}</h1>
+            <h1>${res.siddur.nussach}</h1>
+          `;
+          document.getElementById("root").innerHTML = output;
+        })
+        .catch(err => {
+          console.log(err);
+        });
+    </script>
+  </body>
+</html>
